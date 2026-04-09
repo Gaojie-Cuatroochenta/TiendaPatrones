@@ -3,7 +3,7 @@ package app;
 import controller.AppController;
 import controller.PedidoController;
 import event.EventManager;
-import model.Cliente;
+import model.Equipo;
 import model.PedidoRepository;
 import view.VistaConsola;
 import writer.PedidoFileWriter;
@@ -17,7 +17,7 @@ public class Main {
         PedidoController pc = new PedidoController(em, pr);
         PedidoFileWriter pfw = new PedidoFileWriter("pedidos_confirmados.txt");
         AppController ac = new AppController(pc, vista, pfw);
-        Cliente cli = new Cliente();
+        Equipo cli = new Equipo();
         em.subscribe(cli);
         
         boolean cerrar;
