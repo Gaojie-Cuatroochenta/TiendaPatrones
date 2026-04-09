@@ -1,8 +1,12 @@
 package controller;
 
+import model.Descuento;
+import model.GastosEnvio;
+import model.Impuesto;
 import model.OpcionOperacion;
 import model.Pedido;
 import model.PedidoRepository;
+import model.Recargo;
 import event.EventManager;
 
 public class PedidoController {
@@ -40,17 +44,20 @@ public class PedidoController {
 		if (pedido != null) {
 			switch(op) {
 				case OpcionOperacion.APLICAR_DESCUENTO:
-					pedido.setDescuento(cantidad);
+					pedido = new Descuento(pedido, cantidad);
 					break;
 				case OpcionOperacion.APLICAR_RECARGO:
-					pedido.setRecargo(cantidad);
+					pedido = new Recargo(pedido, cantidad);
 					break;
 				case OpcionOperacion.PONER_GASTO_ENVIO:
-					pedido.setGastoEnvio(cantidad);
+					pedido = new GastosEnvio(pedido, cantidad);
 					break;
 				case OpcionOperacion.PONER_IMPUESTO:
-					pedido.setImpuesto(cantidad);
+					pedido = new Impuesto(pedido, cantidad);
+					break;
 			}
+			repo.borrar(repo.buscarPorId(id));
+			repo.guardar(pedido);
 			return true;
 		} else {
 			return false;

@@ -1,2 +1,4 @@
 P01;100,00;120,00;20,00;0,00;0,00;0,00
 P02;20,00;28,00;0,00;7,00;2,00;3,00
+Pedido a: Importe base 20,00 + Descuento 1.0%
+Pedido a: Importe base 12,00 + Descuento 3.0 + Recargo 1.0
